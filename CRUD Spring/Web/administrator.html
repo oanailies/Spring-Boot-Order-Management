@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Management Administrator</title>
+    <style>
+        body {
+            background-image: url('images/fundal.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+
+        .manage-users-link {
+            font-size: 24px;
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+            display: block;
+            margin-top: 50px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<a class="manage-users-link" th:href="@{/users}">Manage Users</a>
+<a class="manage-users-link" th:href="@{/menus}">Manage Menus</a>
+<a class="manage-users-link" th:href="@{/orders}">Manage Orders</a>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Menus</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+</head>
+<body>
+<div class="container-fluid text-center">
+    <div><h1>Manage Menus</h1></div>
+    <div class="m-2">
+        <a class="h3" th:href="@{/menus/new}"> Add New Menu</a>
+    </div>
+    <div>
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th>Image</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="menu : ${listMenus}">
+                <td th:text="${menu.id}"></td>
+                <td th:text="${menu.name}"></td>
+                <td th:text="${menu.price}"></td>
+                <td th:text="${menu.stock}"></td>
+                <td>
+                    <img th:if="${menu.image != null}" th:src="@{'data:image/jpeg;base64,' + #strings.bytesToBase64(menu.image)}"
+                         style="max-width: 200px; max-height: 200px;" />
+                </td>
+                <td>
+                    <a class="h4 mr-3" th:href="@{'/menus/edit/' + ${menu.id}}">Edit</a>
+                    <a class="h4" th:href="@{'/menus/delete/' + ${menu.id}}">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

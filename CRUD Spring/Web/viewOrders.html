@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Orders</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+</head>
+<body>
+<div class="container-fluid text-center">
+    <div><h1>Manage Orders</h1></div>
+    <div>
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Total Price</th>
+                <th>Quantity</th>
+                <th>View Products</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="order : ${listOrders}">
+                <td th:text="${order.id}"></td>
+                <td th:text="${order.orderDate}"></td>
+                <td th:text="${order.orderStatus}"></td>
+                <td th:text="${order.totalPrice}"></td>
+                <td th:text="${order.totalQuantity}"></td>
+                <td> <a class="h4" th:href="@{'/viewOrders/foods/' + ${order.id}}">View</a></td>
+                <td>
+                    <a class="h4 mr-3" th:href="@{'/viewOrders/edit/' + ${order.id}}">Edit</a>
+                    <a class="h4" th:href="@{'/viewOrders/delete/' + ${order.id}}">Delete</a>
+                </td>
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
